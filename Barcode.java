@@ -27,6 +27,21 @@ public class Barcode implements Comparable<Barcode>{
       _zip = zip;
 
   }
+  public String toCode(String zip){
+	if (zip.length()!=5){
+	    throw new IllegalArgumentException();
+	}
+	String code = "|";
+	try{
+	    for (int i=0; i<zip.length(); i++){
+		code+=bar[(int)zip.charAt(i)];
+	    }
+	}
+	catch{
+	  throw new IllegalArgumentException("Invalid Zip");
+	}
+    }
+
 /*
 // postcondition: Creates a copy of a bar code.
   public Barcode clone(){
