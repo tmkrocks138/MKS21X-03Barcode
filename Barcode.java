@@ -47,19 +47,20 @@ public class Barcode implements Comparable<Barcode>{
     int x = this.compareTo(other);
     return x;
  }
+
+    private int checkSum(){
+	int sum = 0;
+	for(int i = 0; i < _zip.length(); i++){
+	    int j = _zip.charAt(i) + 0;
+	    sum += j;
+	}
+	sum = sum % 10;
+	return sum;
+    }
 /*
-// postcondition: Creates a copy of a bar code.
-
-// postcondition: computes and returns the check sum for _zip
-  private int checkSum(){}
-
 //postcondition: format zip + check digit + Barcode 
 //ex. "084518  |||:::|::|::|::|:|:|::::|||::|:|"      
   public String toString(){}
-
-
-// postcondition: compares the zip + checkdigit, in numerical order. 
-  public int compareTo(Barcode other){}
 */
     
 }
