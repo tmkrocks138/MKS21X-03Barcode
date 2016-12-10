@@ -57,11 +57,15 @@ public class Barcode implements Comparable<Barcode>{
 	sum = sum % 10;
 	return sum;
     }
-/*
-//postcondition: format zip + check digit + Barcode 
-//ex. "084518  |||:::|::|::|::|:|:|::::|||::|:|"      
-  public String toString(){}
-*/
+    public String toZip(String code){
+	String  zip= "";
+
+	return zip;
+    }
+
+    public String toString(){
+	return _zip+this.checkSum()+toCode(_zip);
+    }
     
 }
 
