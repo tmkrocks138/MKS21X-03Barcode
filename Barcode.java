@@ -59,7 +59,26 @@ public class Barcode implements Comparable<Barcode>{
     }
     public String toZip(String code){
 	String  zip= "";
-
+	if (code.length()!=32){
+	    throw new IllegalArgumentException("The code is not the right length");
+	}
+	if(code.charAt(0)!='|' && code.charAt(31)!='|'){
+	    throw new IllegalArgumentException("Does not start/end with '|'");	
+	}
+	String codeNoGuard = code.substring(1,31);
+	for (int i=0;i<codeNoGuard.length();i=i+5){
+	    String j =codeNoGuard.substring(i,i+5);
+	    for (int h = 0; h < bar.length; h++) {
+		if (bar[h] == j) {
+		    zip+=h;
+		    h=bar.length +2;
+		}
+		else if (h == bar.length - 1){
+		    throw new IllegalArgumentException("This code has invalid bar code");
+			}
+	    }
+	   
+	} 
 	return zip;
     }
 
